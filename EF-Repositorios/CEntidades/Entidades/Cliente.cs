@@ -8,7 +8,10 @@ namespace CEntidades.Entidades
 {
     public class Cliente
     {
-        public int Id { get; set; }
-        public bool SocioCliente { get; set; }
+        public int IdCliente { get; set; }
+        public bool EsSocio { get; set; }
+        public bool PagaIVA { get; set; }
+        public Persona Persona { get; set; }
+        public ICollection<Prestamo> Prestamos { get; set; }
     }
 }

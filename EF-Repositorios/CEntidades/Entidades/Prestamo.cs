@@ -8,12 +8,11 @@ namespace CEntidades.Entidades
 {
     public class Prestamo
     {
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
+        public int IdPrestamo { get; set; }
         public DateTime FechaEntrega { get; set; }
         public DateTime FechaLimite { get; set; }
         public DateTime? FechaDevolucion { get; set; }
+        public Cliente Cliente { get; set; }
         
-
     }
 }

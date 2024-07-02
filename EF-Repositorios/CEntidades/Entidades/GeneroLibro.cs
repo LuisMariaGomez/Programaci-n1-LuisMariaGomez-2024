@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace CEntidades.Entidades
 {
-    public class Vendedor 
+    public class GeneroLibro
     {
-        public int Id { get; set; }
-        public bool SueldoVendedor { get; set; }
-
-
+        public int IdGeneroLibro { get; set; }
     }
 }

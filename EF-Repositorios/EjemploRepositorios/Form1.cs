@@ -15,7 +15,7 @@ namespace EjemploRepositorios
 
         private async void Form1_Load(object sender, EventArgs e)
         {
-            List<Autor> autor = await _autorLogic.GetAll();
+            List<Autor> examples = await _autorLogic.GetAll();
         }
     }
 }

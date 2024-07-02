@@ -8,10 +8,7 @@ namespace CEntidades.Entidades
 {
     public class Venta
     {
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
-        public DateTime Fecha { get; set; }
-
-
+        public int IdVenta { get; set; }
+        public DateTime FechaVenta { get; set; }
     }
 }

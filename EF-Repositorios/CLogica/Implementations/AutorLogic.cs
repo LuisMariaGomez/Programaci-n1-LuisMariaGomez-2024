@@ -1,5 +1,4 @@
-﻿using CDatos.Repositories;
-using CDatos.Repositories.Contracts;
+﻿using CDatos.Repositories.Contracts;
 using CEntidades.Entidades;
 using CLogica.Contracts;
 
@@ -7,7 +6,7 @@ namespace CLogica.Implementations
 {
     public class AutorLogic : IAutorLogic
     {
-        private IAutorRepository _autorRepository; 
+        private IAutorRepository _autorRepository;
 
         public AutorLogic(IAutorRepository autorRepository)
         {
