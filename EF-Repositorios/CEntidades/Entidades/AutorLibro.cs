@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace CEntidades.Entidades
 {
-    public class Autor
+    internal class AutorLibro
     {
-        public int IdAutor { get; set; }
+        public int IdAutorLibro { get; set; }
 
-        public int  { get; set; }
-
-        public bool CantLibrosEscritos { get; set; }
 
     }
 }
