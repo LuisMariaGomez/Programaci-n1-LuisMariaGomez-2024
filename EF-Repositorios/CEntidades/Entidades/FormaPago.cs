@@ -10,5 +10,7 @@ namespace CEntidades.Entidades
     {
         public int IdFormaPago { get; set; }
         public string Descripcion { get; set; }
+        public ICollection<Prestamo> Prestamos { get; set; }// relacion 1:n con prestamo
+        public ICollection<Venta> Venta { get; set; }// relacion 1:n con Venta
     }
 }

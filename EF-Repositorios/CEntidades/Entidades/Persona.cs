@@ -18,5 +18,7 @@ namespace CEntidades.Entidades
         public string Email { get; set; }
         public Autor? Autor { get; set; }
         public Cliente? Cliente { get; set; }
+        public Empleado? Empleado { get; set; }
+
     }
 }

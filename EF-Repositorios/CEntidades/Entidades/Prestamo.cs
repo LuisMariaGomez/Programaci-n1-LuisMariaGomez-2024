@@ -13,6 +13,10 @@ namespace CEntidades.Entidades
         public DateTime FechaLimite { get; set; }
         public DateTime? FechaDevolucion { get; set; }
         public Cliente Cliente { get; set; }
-        
+        public Empleado Empleado { get; set; }// Para la relacion 1:n con Empleado
+        public FormaPago FormaPago { get; set; }// Para la relacion 1:n con FormaPago
+        public ICollection<CopiaLibro> CopiasLibro { get; set; } // Para la relacion n:n con CopiaLibro
+
+
     }
 }

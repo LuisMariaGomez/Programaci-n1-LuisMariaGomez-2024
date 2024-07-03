@@ -13,5 +13,10 @@ namespace CEntidades.Entidades
         public string Cargo { get; set; }
         public DateTime FechaIngreso { get; set; }
         public float Sueldo { get; set; }
+        public Persona Persona { get; set; }//Para herencia de Persona
+        public ICollection<Prestamo> Prestamos { get; set; }// relacion 1:n con Prestamo
+        public ICollection<Venta> Venta { get; set; }// relacion 1:n con Venta
+
+
     }
 }

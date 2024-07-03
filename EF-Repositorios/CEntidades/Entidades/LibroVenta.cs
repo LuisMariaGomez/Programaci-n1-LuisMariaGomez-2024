@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace CEntidades.Entidades
 {
-    public class GeneroLibro
+    public class LibroVenta
     {
-        public int IdGeneroLibro { get; set; }
-        public int IdGenero { get; set; }
+        public int IdLibroVenta { get; set; }
         public int IdLibro { get; set; }
+        public int IdVenta { get; set; }
     }
 }

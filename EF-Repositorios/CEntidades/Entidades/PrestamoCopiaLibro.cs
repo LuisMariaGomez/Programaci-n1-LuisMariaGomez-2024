@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace CEntidades.Entidades
 {
-    public class CopiaLibro
+    public class PrestamoCopiaLibro
     {
+        public int IdPrestamoCopiaLibro { get; set; }
+        public int IdPrestamo { get; set; }
         public int IdCopiaLibro { get; set; }
-        public float PrecioPrestamo { get; set; }
-        public ICollection<Prestamo> Prestamos { get; set; } // Para la relacion n:n con Prestamo
-
     }
 }

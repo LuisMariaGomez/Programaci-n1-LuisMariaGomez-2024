@@ -59,6 +59,8 @@ namespace CDatos.Contexts
             {
                 entity.HasKey(e => e.IdAutorLibro)
                     .HasName("PK_ID_AUTORLIBRO");
+
+
             });
             modelBuilder.Entity<Cliente>(entity =>
             {
@@ -68,6 +70,12 @@ namespace CDatos.Contexts
                     .WithOne(e => e.Cliente)
                     .HasForeignKey("IdCliente")
                     .IsRequired();
+
+                entity.HasMany(e => e.Venta)        // Relacion 1:n Cliente-Venta
+                .WithOne(e => e.Cliente)  
+                .HasForeignKey("IdCliente") 
+                .IsRequired();
+
             });
             modelBuilder.Entity<CopiaLibro>(entity =>
             {
@@ -78,22 +86,55 @@ namespace CDatos.Contexts
             {
                 entity.HasKey(e => e.IdEditorial)
                     .HasName("PK_ID_EDITORIAL");
+
+                entity.HasMany(e => e.Libro)        // Relacion 1:n Editorial-Libro
+                    .WithOne(e => e.Editorial)
+                    .HasForeignKey("IdEditorial")
+                    .IsRequired();
             });
             modelBuilder.Entity<Empleado>(entity =>
             {
                 entity.HasKey(e => e.IdEmpleado)
                     .HasName("PK_ID_EMPLEADO");
+
+                entity.HasMany(e => e.Prestamos)    //Relacion 1:n Empleado-Prestamo
+                    .WithOne(e => e.Empleado)       
+                    .HasForeignKey("IdEmpleado")
+                    .IsRequired();
+
+                entity.HasMany(e => e.Venta)        //Relacion 1:n Empleado-Venta
+                    .WithOne(e => e.Empleado)
+                    .HasForeignKey("IdEmpleado")
+                    .IsRequired();
+
             });
             modelBuilder.Entity<FormaPago>(entity =>
             {
                 entity.HasKey(e => e.IdFormaPago)
                     .HasName("PK_ID_FORMAPAGO");
+
+                entity.HasMany(e => e.Prestamos)    //Relacion 1:n FormaPago-Prestamo
+                    .WithOne(e => e.FormaPago)       
+                    .HasForeignKey("IdFormaPago")
+                    .IsRequired();
+
+                entity.HasMany(e => e.Venta)        //Relacion 1:n FormaPago-Venta
+                    .WithOne(e => e.FormaPago)
+                    .HasForeignKey("idFormaPago")
+                    .IsRequired();
+
             });
             modelBuilder.Entity<Genero>(entity =>
             {
                 entity.HasKey(e => e.IdGenero)
                     .HasName("PK_ID_GENERO");
-            });
+
+                entity.HasMany(e => e.Libros)       // Relacion n:n Libro-Genero
+                    .WithMany(e => e.Generos)
+                    .UsingEntity<GeneroLibro>(
+                    l => l.HasOne<Libro>().WithMany().HasForeignKey(e => e.IdLibro),
+                    r => r.HasOne<Genero>().WithMany().HasForeignKey(e => e.IdGenero));
+                    });
             modelBuilder.Entity<GeneroLibro>(entity =>
             {
                 entity.HasKey(e => e.IdGeneroLibro)
@@ -103,7 +144,14 @@ namespace CDatos.Contexts
             {
                 entity.HasKey(e => e.IdLibro)
                     .HasName("PK_ID_LIBRO");
+
+                entity.HasMany(e => e.Ventas)
+                    .WithMany(e => e.Libros)
+                    .UsingEntity<LibroVenta>(
+                    l => l.HasOne<Venta>().WithMany().HasForeignKey(e => e.IdVenta),
+                    r => r.HasOne<Libro>().WithMany().HasForeignKey(e => e.IdLibro));
             });
+
             modelBuilder.Entity<Persona>(entity =>
             {
                 entity.HasKey(e => e.IdPersona)
@@ -116,12 +164,23 @@ namespace CDatos.Contexts
                     .WithOne(e => e.Persona)
                     .HasForeignKey<Cliente>("IdPersona")
                     .IsRequired(false);
+                entity.HasOne(e => e.Empleado)
+                    .WithOne(e => e.Persona)
+                    .HasForeignKey<Cliente>("IdPersona")
+                    .IsRequired(false);
             });
             modelBuilder.Entity<Prestamo>(entity =>
             {
                 entity.HasKey(e => e.IdPrestamo)
                     .HasName("PK_ID_PRESTAMO");
+
+                entity.HasMany(e => e.CopiasLibro)      // Relacion n:n CopiaLibro-Prestamo
+                    .WithMany(e => e.Prestamos)
+                    .UsingEntity<PrestamoCopiaLibro>(
+                    l => l.HasOne<CopiaLibro>().WithMany().HasForeignKey(e => e.IdCopiaLibro),
+                    r => r.HasOne<Prestamo>().WithMany().HasForeignKey(e => e.IdPrestamo));
             });
+
             modelBuilder.Entity<Venta>(entity =>
             {
                 entity.HasKey(e => e.IdVenta)

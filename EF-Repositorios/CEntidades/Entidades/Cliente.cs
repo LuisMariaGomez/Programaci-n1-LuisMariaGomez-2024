@@ -13,5 +13,7 @@ namespace CEntidades.Entidades
         public bool PagaIVA { get; set; }
         public Persona Persona { get; set; }
         public ICollection<Prestamo> Prestamos { get; set; }
+        public ICollection<Venta> Venta { get; set; }
+
     }
 }

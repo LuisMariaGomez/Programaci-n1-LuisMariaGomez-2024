@@ -10,5 +10,11 @@ namespace CEntidades.Entidades
     {
         public int IdVenta { get; set; }
         public DateTime FechaVenta { get; set; }
+        public Cliente Cliente { get; set; }
+        public Empleado Empleado { get; set; }
+        public FormaPago FormaPago { get; set; }
+        public ICollection<Libro> Libros { get; set; }            // relacion n:m con Libro
+
+
     }
 }
