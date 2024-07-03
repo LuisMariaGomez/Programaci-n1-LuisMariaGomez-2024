@@ -145,7 +145,7 @@ namespace CDatos.Contexts
                 entity.HasKey(e => e.IdLibro)
                     .HasName("PK_ID_LIBRO");
 
-                entity.HasMany(e => e.Ventas)
+                entity.HasMany(e => e.Ventas)       // Relacion n:n Venta-Libro
                     .WithMany(e => e.Libros)
                     .UsingEntity<LibroVenta>(
                     l => l.HasOne<Venta>().WithMany().HasForeignKey(e => e.IdVenta),
