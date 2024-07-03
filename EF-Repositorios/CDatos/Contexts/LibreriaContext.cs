@@ -144,12 +144,6 @@ namespace CDatos.Contexts
             {
                 entity.HasKey(e => e.IdLibro)
                     .HasName("PK_ID_LIBRO");
-
-                entity.HasMany(e => e.Ventas)       // Relacion n:n Venta-Libro
-                    .WithMany(e => e.Libros)
-                    .UsingEntity<LibroVenta>(
-                    l => l.HasOne<Venta>().WithMany().HasForeignKey(e => e.IdVenta),
-                    r => r.HasOne<Libro>().WithMany().HasForeignKey(e => e.IdLibro));
             });
 
             modelBuilder.Entity<Persona>(entity =>
@@ -166,7 +160,7 @@ namespace CDatos.Contexts
                     .IsRequired(false);
                 entity.HasOne(e => e.Empleado)
                     .WithOne(e => e.Persona)
-                    .HasForeignKey<Cliente>("IdPersona")
+                    .HasForeignKey<Empleado>("IdPersona")
                     .IsRequired(false);
             });
             modelBuilder.Entity<Prestamo>(entity =>
@@ -174,17 +168,25 @@ namespace CDatos.Contexts
                 entity.HasKey(e => e.IdPrestamo)
                     .HasName("PK_ID_PRESTAMO");
 
-                entity.HasMany(e => e.CopiasLibro)      // Relacion n:n CopiaLibro-Prestamo
-                    .WithMany(e => e.Prestamos)
-                    .UsingEntity<PrestamoCopiaLibro>(
-                    l => l.HasOne<CopiaLibro>().WithMany().HasForeignKey(e => e.IdCopiaLibro),
-                    r => r.HasOne<Prestamo>().WithMany().HasForeignKey(e => e.IdPrestamo));
+
+                entity.HasMany(e => e.CopiasLibro)  //Relacion 1:n Prestamo-CopiaLibro
+                        .WithOne(e => e.Prestamos)
+                        .HasForeignKey("IdPrestamo")
+                        .IsRequired();
+
+
             });
 
             modelBuilder.Entity<Venta>(entity =>
             {
                 entity.HasKey(e => e.IdVenta)
                     .HasName("PK_ID_VENTA");
+
+                entity.HasMany(e => e.Libros)       //Relacion 1:n Venta-Libro
+                        .WithOne(e => e.Venta)
+                        .HasForeignKey("IdVenta")
+                        .IsRequired();
+
             });
 
             OnModelCreatingPartial(modelBuilder);

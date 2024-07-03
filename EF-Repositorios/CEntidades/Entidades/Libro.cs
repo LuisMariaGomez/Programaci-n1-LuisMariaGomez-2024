@@ -19,7 +19,8 @@ namespace CEntidades.Entidades
         public Editorial Editorial { get; set; }
         public ICollection<CopiaLibro> CopiasLibro { get; set; }    // relacion 1:n con CopiaLibro
         public ICollection<Genero> Generos { get; set; }            // relacion n:m con Genero
-        public ICollection<Venta> Ventas { get; set; }            // relacion n:m con Venta
+        public Venta Venta { get; set; }
+
 
     }
 }

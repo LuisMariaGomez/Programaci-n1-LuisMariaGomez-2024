@@ -23,8 +23,4 @@
     <ProjectReference Include="..\CEntidades\CEntidades.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

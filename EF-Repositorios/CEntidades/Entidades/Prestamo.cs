@@ -15,7 +15,7 @@ namespace CEntidades.Entidades
         public Cliente Cliente { get; set; }
         public Empleado Empleado { get; set; }// Para la relacion 1:n con Empleado
         public FormaPago FormaPago { get; set; }// Para la relacion 1:n con FormaPago
-        public ICollection<CopiaLibro> CopiasLibro { get; set; } // Para la relacion n:n con CopiaLibro
+        public ICollection<CopiaLibro> CopiasLibro { get; set; }    // relacion 1:n con CopiaLibro
 
 
     }
