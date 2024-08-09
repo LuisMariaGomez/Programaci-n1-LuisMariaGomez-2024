@@ -15,5 +15,7 @@ namespace CEntidades.Entidades
         public ICollection<Prestamo> Prestamos { get; set; }
         public ICollection<Venta> Venta { get; set; }
 
+        public Cliente() { }
+
     }
 }
