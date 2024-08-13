@@ -20,20 +20,5 @@ namespace CEntidades.Entidades
         public Autor? Autor { get; set; }
         public Cliente? Cliente { get; set; }
         public Empleado? Empleado { get; set; }
-
-        public Persona(string Nombre, string Apellido) { 
-            this.Nombre = Nombre;
-            this.Apellido = Apellido;
-        }
-        public Persona(string Documento, string TipoDocumento, string Nombre, string Apellido, string Telefono, string Nacionalidad, string Email)
-        {
-            this.Documento = Documento; 
-            this.TipoDocumento = TipoDocumento;
-            this.Nombre = Nombre;
-            this.Apellido = Apellido;
-            this.Telefono = Telefono;
-            this.Nacionalidad = Nacionalidad;
-            this.Email = Email;
-        }
     }
 }
