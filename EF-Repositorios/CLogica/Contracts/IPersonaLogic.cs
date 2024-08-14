@@ -12,6 +12,7 @@ namespace CLogica.Contracts
         void ModificarPersona(string documento, Persona persona);
         void EliminarPersona(string documento);
         Persona ObtenerPersonaPorDocumento(string documento);
+        void ActualizarDatosPersonales(Persona personaExistente, Persona personaActualizada);
         Task<List<Persona>> ObtenerTodos();
     }
 }

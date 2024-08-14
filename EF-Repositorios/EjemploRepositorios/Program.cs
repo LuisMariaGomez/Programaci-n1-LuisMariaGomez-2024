@@ -40,6 +40,10 @@ namespace EjemploRepositorios
 
                     services.AddTransient<IAutorRepository, AutorRepository>();
 
+
+
+
+
                     services.AddTransient<Form1>();
 
                     services.AddDbContext<LibreriaContext>(options => options.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=LibreriaProg2024;Integrated Security=True;TrustServerCertificate=true"), ServiceLifetime.Transient);

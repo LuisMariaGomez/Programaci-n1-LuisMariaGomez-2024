@@ -11,4 +11,8 @@
     <ProjectReference Include="..\CEntidades\CEntidades.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Metodos\" />
+  </ItemGroup>
+
 </Project>

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CLogica.Implementations
 {
-    public class IClienteLogic
+    public interface IClienteLogic
     {
         void AltaCliente(Persona persona, Cliente cliente);
-        void ModificarCliente(string documento, Persona persona);
-        void EliminarCliente(string documento);
-        Persona ObtenerClientePorDocumento(string documento);
-        Task<List<Persona>> ObtenerTodosClientes();
+        void ModificarPersona(string documento, Cliente clienteActualizado, Persona personaActualizada);
+        void BajaCliente(string documento, Persona persona, Cliente cliente);
+        Cliente ObtenerClientePorDocumento(string documento);
+        Task<List<Cliente>> ObtenerTodosClientes();
     }
 }

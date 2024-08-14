@@ -18,7 +18,6 @@ namespace CLogica.Implementations
         {
             _personaRepository = personaRepository;
             _context = context;
-            _context = context;
         }
 
         // Se ingresa un Documento y una Persona para actualizar los datos
@@ -32,7 +31,7 @@ namespace CLogica.Implementations
             _personaRepository.Save();
         }
 
-        private void ActualizarDatosPersonales(Persona personaExistente, Persona personaActualizada)
+        public void ActualizarDatosPersonales(Persona personaExistente, Persona personaActualizada)
         {
             personaExistente.Nombre = personaActualizada.Nombre;
             personaExistente.Apellido = personaActualizada.Apellido;

@@ -12,6 +12,7 @@ namespace CLogica.Implementations
     public class CreacionPersonaLogic : ICreacionPersonaLogic
     {
         private readonly ICreacionPersonaRepository _personaRepository;
+
         public CreacionPersonaLogic(ICreacionPersonaRepository personaRepository)
         {
             _personaRepository = personaRepository;
@@ -33,6 +34,8 @@ namespace CLogica.Implementations
                 Telefono = personaNueva.Telefono,
                 Email = personaNueva.Email,
             };
+            _personaRepository.Update(persona);
+            _personaRepository.Save();
         }
 
 
@@ -41,10 +44,10 @@ namespace CLogica.Implementations
         // Precheck de validar los datos 
         private void ValidarDatosPersona(Persona persona)
         {
-            if (string.IsNullOrEmpty(persona.Nombre) || !IsValidName(persona.Nombre))
+            if (string.IsNullOrEmpty(persona.Nombre) || !IsValidStrinng_withLessThanXLetters(persona.Nombre, 15))
                 throw new ArgumentException("Nombre inválido");
 
-            if (string.IsNullOrEmpty(persona.Apellido) || !IsValidName(persona.Apellido))
+            if (string.IsNullOrEmpty(persona.Apellido) || !IsValidStrinng_withLessThanXLetters(persona.Apellido, 15))
                 throw new ArgumentException("Apellido inválido");
 
             if (string.IsNullOrEmpty(persona.Documento) || !IsValidDocumento(persona.Documento))
@@ -56,9 +59,9 @@ namespace CLogica.Implementations
             if (string.IsNullOrEmpty(persona.Email) || !IsValidEmail(persona.Email))
                 throw new ArgumentException("Email inválido");
         }
-        private bool IsValidName(string nombre)
+        public bool IsValidStrinng_withLessThanXLetters(string word, int num_letters)
         {
-            return ContieneCaracter(nombre) && nombre.Length < 15;
+            return ContieneCaracter(word) && word.Length < num_letters;
         }
 
         private bool IsValidDocumento(string documento)

@@ -13,5 +13,10 @@ namespace CLogica.Contracts
         {
 
         }
+
+        bool IsValidStrinng_withLessThanXLetters(string word, int num_letters);
+
+        bool ContieneCaracter(string text);
     }
 }
+
